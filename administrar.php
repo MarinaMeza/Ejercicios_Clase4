@@ -24,10 +24,10 @@
     if(file_exists($destino))
     {
         echo "El archivo ya existe";
-        copy($destino,"backup/");
+        copy($destino,"backup/".date("Y-m-d-").$_FILES["archivoASubir"]["name"]);
     }
 
-    if($flag=TRUE)
+    if($flag)
     {
        
         move_uploaded_file($_FILES["archivoASubir"]["tmp_name"],$destino);
