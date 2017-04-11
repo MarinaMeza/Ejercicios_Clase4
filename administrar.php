@@ -2,7 +2,7 @@
     $destino = "upload/".$_FILES["archivoASubir"]["name"];
     $flag=TRUE;
     
-    var_dump($_FILES);
+    //var_dump($_FILES);
     
     $formatoImagen = $_FILES["archivoASubir"]["type"];
     //echo '<a href="mostrarimagen.html">Mostrar</a>'
@@ -24,12 +24,12 @@
     if(file_exists($destino))
     {
         echo "El archivo ya existe";
-        copy($destino,"backup/".date("Y-m-d-").$_FILES["archivoASubir"]["name"]);
+        copy($destino,"backup/".date("Y-m-d - h-m-s a - ").$_FILES["archivoASubir"]["name"]);
     }
 
     if($flag)
     {
-       
         move_uploaded_file($_FILES["archivoASubir"]["tmp_name"],$destino);
+        echo '<img src="'.$destino.'">';
     }
 ?>
